@@ -6,13 +6,14 @@
       :pagination="false"
       :scroll="{ x: 1500, y: 'calc(100vh - 280px)' }"
       row-key="id"
+      v-model:expandedRowKeys="store.expandedKeys"
       :expand-row-by-click="false"
       size="small"
       class="h-full payroll-table"
     >
       <!-- Header Cell with Tooltip -->
       <template #headerCell="{ column }">
-        <div class="flex items-center gap-1" :class="column.align === 'right' ? 'justify-end' : 'justify-start'">
+        <div class="flex items-center gap-1" :class="column.align === 'right' ? 'justify-end' : (column.align === 'center' ? 'justify-center' : 'justify-start')">
              <span>{{ column.title }}</span>
              <a-tooltip v-if="column.customTooltip" overlayClassName="max-w-[260px]">
                 <template #title><span v-html="column.customTooltip"></span></template>
@@ -50,7 +51,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { usePayrollStore, type PayrollNode } from '@/stores/payroll'
-import { PhInfo } from '@phosphor-icons/vue'
+import { PhInfo } from '@/components/icons'
 import TrendValue from '@/components/TrendValue.vue'
 import type { TableColumnType } from 'ant-design-vue'
 
@@ -116,6 +117,8 @@ const columns = computed<CustomColumnType[]>(() => {
       commonNameCol,
       {
         title: '人员概况',
+        align: 'center',
+        className: 'bg-[var(--color-primary-1)] border-r border-[#e0e0e0]',
         children: [
             {
                 title: '发薪总人数',
@@ -131,6 +134,7 @@ const columns = computed<CustomColumnType[]>(() => {
                 width: 120,
                 align: 'right',
                 customTooltip: t('涉及加班'),
+                className: 'bg-white',
             },
             {
                 title: '涉及补偿金',
@@ -138,11 +142,14 @@ const columns = computed<CustomColumnType[]>(() => {
                 width: 120,
                 align: 'right',
                 customTooltip: t('涉及补偿金'),
+                className: 'bg-white border-r border-[#e0e0e0]',
             }
         ]
       },
       {
         title: '薪酬成本 (万元)',
+        align: 'center',
+        className: 'bg-[var(--color-primary-1)]',
         children: [
             {
                 title: '发薪总额',
@@ -156,7 +163,7 @@ const columns = computed<CustomColumnType[]>(() => {
                 // isClickable: true
                 isClickable: false
             },
-            { title: '应发工资', key: 'salary', width: 120, align: 'right', customTooltip: t('应发工资'), isCurrency: true },
+            { title: '应发工资', key: 'salary', width: 120, align: 'right', customTooltip: t('应发工资'), isCurrency: true, className: 'bg-white' },
             { 
                 title: '加班费', 
                 key: 'ot_pay', 
@@ -166,7 +173,8 @@ const columns = computed<CustomColumnType[]>(() => {
                 isCurrency: true, 
                 // TODO: 临时注释交互功能
                 // isClickable: true 
-                isClickable: false
+                isClickable: false,
+                className: 'bg-white'
             },
             { 
                 title: '补偿金', 
@@ -177,11 +185,12 @@ const columns = computed<CustomColumnType[]>(() => {
                 isCurrency: true, 
                 // TODO: 临时注释交互功能
                 // isClickable: true 
-                isClickable: false
+                isClickable: false,
+                className: 'bg-white'
             },
-            { title: '签约金', key: 'signing_bonus', width: 120, align: 'right', customTooltip: t('签约金'), isCurrency: true },
-            { title: '奖金', key: 'bonus', width: 120, align: 'right', customTooltip: t('奖金'), isCurrency: true },
-            { title: '司付社保公积金', key: 'social', width: 140, align: 'right', customTooltip: t('五险一金司付'), isCurrency: true },
+            { title: '签约金', key: 'signing_bonus', width: 120, align: 'right', customTooltip: t('签约金'), isCurrency: true, className: 'bg-white' },
+            { title: '奖金', key: 'bonus', width: 120, align: 'right', customTooltip: t('奖金'), isCurrency: true, className: 'bg-white' },
+            { title: '司付社保公积金', key: 'social', width: 140, align: 'right', customTooltip: t('五险一金司付'), isCurrency: true, className: 'bg-white' },
         ]
       },
       commonDescCol

@@ -1,12 +1,22 @@
 <template>
   <div class="flex justify-end items-center mb-4 shrink-0 px-6">
-    <!-- Left: Search (Hidden in original, kept hidden or placeholder) -->
-    <div class="hidden relative w-72 mr-auto">
-      <a-input placeholder="搜索部门 / 团队..." allow-clear>
-        <template #prefix>
-          <PhMagnifyingGlass class="text-[var(--color-text-3)]" />
-        </template>
-      </a-input>
+    <!-- Left: Tree Controls -->
+    <div class="flex items-center gap-3 mr-auto">
+      <a-button 
+        @click="store.expandAll" 
+        :disabled="store.isAllExpanded"
+        class="group flex items-center justify-center !px-3 transition-all duration-300 hover:!text-[var(--color-primary-6)] hover:!border-[var(--color-primary-5)] active:scale-95"
+      >
+        <span>展开</span>
+      </a-button>
+      
+      <a-button 
+        @click="store.collapseAll" 
+        :disabled="store.isAllCollapsed"
+        class="group flex items-center justify-center !px-3 transition-all duration-300 hover:!text-[var(--color-primary-6)] hover:!border-[var(--color-primary-5)] active:scale-95"
+      >
+        <span>收起</span>
+      </a-button>
     </div>
 
     <!-- Right: Controls -->
@@ -46,7 +56,7 @@
 
 <script setup lang="ts">
 import { usePayrollStore } from '@/stores/payroll'
-import { PhMagnifyingGlass } from '@phosphor-icons/vue'
+import { PhMagnifyingGlass } from '@/components/icons'
 
 const store = usePayrollStore()
 </script>

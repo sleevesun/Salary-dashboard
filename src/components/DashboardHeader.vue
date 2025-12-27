@@ -55,7 +55,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { usePayrollStore } from '@/stores/payroll'
-import { PhCaretLeft, PhCaretRight, PhBell, PhExport } from '@phosphor-icons/vue'
+import { PhCaretLeft, PhCaretRight, PhBell, PhExport } from '@/components/icons'
 
 const store = usePayrollStore()
 

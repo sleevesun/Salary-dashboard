@@ -59,7 +59,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { usePayrollStore } from '@/stores/payroll'
-import { PhCaretRight } from '@phosphor-icons/vue'
+import { PhCaretRight } from '@/components/icons'
 
 const store = usePayrollStore()
 

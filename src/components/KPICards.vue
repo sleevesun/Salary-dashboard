@@ -86,7 +86,7 @@
 import { computed } from 'vue'
 import { usePayrollStore } from '@/stores/payroll'
 import { formatNumber, formatCurrency, getPct } from '@/utils/format'
-import { PhUsers, PhCoins, PhWarningCircle, PhSignOut, PhArrowDownRight, PhArrowUpRight } from '@phosphor-icons/vue'
+import { PhUsers, PhCoins, PhWarningCircle, PhSignOut, PhArrowDownRight, PhArrowUpRight } from '@/components/icons'
 
 const store = usePayrollStore()
 const s = computed(() => store.dashboardSummary)
