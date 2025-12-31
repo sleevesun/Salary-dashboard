@@ -61,11 +61,11 @@ export const usePayrollStore = defineStore('payroll', () => {
     },
     '发薪总额': {
       title: '发薪总额 (B1)',
-      content: '包含企业承担的所有直接人力成本。'
+      content: '包含员工应发工资及公司支付的五险一金总额'
     },
     '应发工资': {
-      title: '应发工资 (B2)',
-      content: '本月应发工资（不包含加班费、补偿金、签约金、奖金）'
+      title: '基本薪资 (B2)',
+      content: '包含基本工资、补贴项、考勤扣款/补款等。'
     },
     '加班费': {
       title: '加班费 (B3)',
@@ -85,7 +85,7 @@ export const usePayrollStore = defineStore('payroll', () => {
     },
     '五险一金司付': {
       title: '五险一金司付 (B7)',
-      content: '包含员工应发工资及公司支付的五险一金总额'
+      content: '由公司支付的五险一金部分总额'
     },
     '发薪变化说明': {
       title: '发薪变化说明 (B9)',

@@ -82,8 +82,7 @@ const columns = computed<CustomColumnType[]>(() => {
     dataIndex: 'desc',
     key: 'desc',
     width: 250,
-    align: 'left',
-    customTooltip: t('发薪变化说明')
+    align: 'left'
   }
 
   if (store.viewMode === 'summary') {
@@ -157,14 +156,14 @@ const columns = computed<CustomColumnType[]>(() => {
                 key: 'total',
                 width: 140,
                 align: 'right',
-                customTooltip: '包含员工应发工资及公司支付的五险一金总额',
+                customTooltip: t('发薪总额'),
                 className: 'bg-[var(--color-primary-1)] text-[var(--color-primary-6)] font-bold',
                 isCurrency: true,
                 // TODO: 临时注释交互功能
                 // isClickable: true
                 isClickable: false
             },
-            { title: '应发工资', key: 'salary', width: 120, align: 'right', customTooltip: t('应发工资'), isCurrency: true, className: 'bg-white' },
+            { title: '基本薪资', key: 'salary', width: 120, align: 'right', customTooltip: t('应发工资'), isCurrency: true, className: 'bg-white' },
             { 
                 title: '加班费', 
                 key: 'ot_pay', 
