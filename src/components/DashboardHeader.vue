@@ -3,9 +3,9 @@
     <div class="flex items-center gap-4">
       <div class="flex items-center gap-3">
         <div class="w-8 h-8 bg-[var(--color-primary-6)] rounded flex items-center justify-center text-white font-bold text-lg">
-          H
+          <PhMoney :size="20" />
         </div>
-        <h1 class="text-xl font-semibold text-[var(--color-text-1)]">薪酬透视驾驶舱</h1>
+        <h1 class="text-xl font-semibold text-[var(--color-text-1)]">工薪发放报表</h1>
       </div>
 
       <div class="h-6 w-px bg-[var(--color-border-2)] mx-2"></div>
@@ -55,7 +55,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { usePayrollStore } from '@/stores/payroll'
-import { PhCaretLeft, PhCaretRight, PhBell, PhExport } from '@/components/icons'
+import { PhCaretLeft, PhCaretRight, PhBell, PhExport, PhMoney } from '@/components/icons'
 
 const store = usePayrollStore()
 

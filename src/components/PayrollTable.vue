@@ -9,6 +9,7 @@
       v-model:expandedRowKeys="store.expandedKeys"
       :expand-row-by-click="false"
       size="small"
+      :row-class-name="(record: PayrollNode) => record.children && record.children.length > 0 ? 'summary-row' : ''"
       class="h-full payroll-table"
     >
       <!-- Header Cell with Tooltip -->
@@ -39,8 +40,8 @@
             />
         </template>
         <template v-else-if="column.key === 'desc'">
-            <div class="text-[var(--color-text-3)] truncate max-w-[200px]" :title="record.desc">
-                {{ record.desc || '-' }}
+            <div class="text-[var(--color-text-3)] truncate max-w-[200px]" :title="record.children && record.children.length > 0 ? '' : record.desc">
+                {{ record.children && record.children.length > 0 ? '-' : (record.desc || '-') }}
             </div>
         </template>
       </template>
@@ -98,7 +99,7 @@ const columns = computed<CustomColumnType[]>(() => {
         isCurrency: false
       },
       {
-        title: '发薪总额 (万元)',
+        title: '工薪总额 (万元)',
         key: 'total',
         width: 200,
         align: 'right',
@@ -152,11 +153,11 @@ const columns = computed<CustomColumnType[]>(() => {
         className: 'bg-[var(--color-primary-1)]',
         children: [
             {
-                title: '发薪总额',
+                title: '工薪总额 (万元)',
                 key: 'total',
                 width: 140,
                 align: 'right',
-                customTooltip: t('发薪总额'),
+                customTooltip: '包含员工应发工资及公司支付的五险一金总额',
                 className: 'bg-[var(--color-primary-1)] text-[var(--color-primary-6)] font-bold',
                 isCurrency: true,
                 // TODO: 临时注释交互功能
@@ -190,7 +191,7 @@ const columns = computed<CustomColumnType[]>(() => {
             },
             { title: '签约金', key: 'signing_bonus', width: 120, align: 'right', customTooltip: t('签约金'), isCurrency: true, className: 'bg-white' },
             { title: '奖金', key: 'bonus', width: 120, align: 'right', customTooltip: t('奖金'), isCurrency: true, className: 'bg-white' },
-            { title: '司付社保公积金', key: 'social', width: 140, align: 'right', customTooltip: t('五险一金司付'), isCurrency: true, className: 'bg-white' },
+            { title: '司付五险一金', key: 'social', width: 140, align: 'right', customTooltip: t('五险一金司付'), isCurrency: true, className: 'bg-white' },
         ]
       },
       commonDescCol
@@ -213,5 +214,19 @@ function handleCellClick(key: string, record: PayrollNode) {
 }
 :deep(.ant-table-row:hover > td) {
   background-color: var(--color-fill-2) !important;
+}
+
+:deep(.summary-row td) {
+  font-weight: 600 !important;
+  color: #333333 !important;
+  font-size: 15px !important;
+}
+
+:deep(.summary-row td .font-medium),
+:deep(.summary-row td .font-inherit),
+:deep(.summary-row td .truncate) {
+  font-weight: 600 !important;
+  color: #333333 !important;
+  font-size: 15px !important;
 }
 </style>

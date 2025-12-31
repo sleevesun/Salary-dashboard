@@ -35,7 +35,7 @@ export const usePayrollStore = defineStore('payroll', () => {
   // State
   const currentMonth = ref('2025-08')
   const viewMode = ref<'summary' | 'detail'>('summary')
-  const showComparison = ref(false)
+  const showComparison = ref(true)
   const drawerVisible = ref(false)
   const drawerType = ref('')
   const drawerData = ref<{ name: string; type: string } | null>(null)
@@ -61,31 +61,31 @@ export const usePayrollStore = defineStore('payroll', () => {
     },
     '发薪总额': {
       title: '发薪总额 (B1)',
-      content: '包含企业承担的所有直接人力成本。<br>公式：∑ (税前应发工资 + 五险一金司付)'
+      content: '包含企业承担的所有直接人力成本。'
     },
     '应发工资': {
       title: '应发工资 (B2)',
-      content: '① 本月应发工资（含加班费、奖金等）<br>② 倒挤计算：实发+扣款项。<br>公式：∑ (工资类 + 绩效 + 补贴)'
+      content: '本月应发工资（不包含加班费、补偿金、签约金、奖金）'
     },
     '加班费': {
       title: '加班费 (B3)',
-      content: '当月发放加班费。<br>公式：∑ (加班费)'
+      content: '当月发放加班费。'
     },
     '离职补偿': {
       title: '离职补偿 (B4)',
-      content: '当月发放离职补偿金。<br>公式：∑ (离职补偿金)'
+      content: '当月发放离职补偿金。'
     },
     '签约金': {
       title: '签约金 (B5)',
-      content: '当月发放签约金。<br>公式：∑ (签约金)'
+      content: '当月发放签约金。'
     },
     '奖金': {
       title: '奖金 (B6)',
-      content: '当月发放奖金。<br>公式：∑ (奖金类工资项)'
+      content: '当月发放奖金。'
     },
     '五险一金司付': {
       title: '五险一金司付 (B7)',
-      content: '仅包含法定福利的企业承担部分。<br>公式：∑ (养老+医疗+失业+工伤+生育) + ∑ (公积金)'
+      content: '包含员工应发工资及公司支付的五险一金总额'
     },
     '发薪变化说明': {
       title: '发薪变化说明 (B9)',
