@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>工薪发放报表 | Payroll Insight Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <div class="logo-section">
+                <div class="logo-box" data-icon="Money"></div>
+                <h1 class="app-title">工薪发放报表</h1>
+            </div>
+            <div class="divider"></div>
+            <div class="month-selector">
+                <div class="icon-btn" onclick="toggleMonth(-1)" data-icon="CaretLeft"></div>
+                <div class="month-text" id="current-month-text">2025年 08月</div>
+                <div class="icon-btn" onclick="toggleMonth(1)" data-icon="CaretRight"></div>
+            </div>
+            <div class="tag">月报 v1.0</div>
+        </div>
+    </header>
+
+    <main>
+        <div class="toolbar">
+            <div class="toolbar-left">
+                <button class="btn" onclick="expandAll()">展开</button>
+                <button class="btn" onclick="collapseAll()">收起</button>
+            </div>
+            <div class="toolbar-right">
+                <div class="view-mode-switch">
+                    <button class="view-mode-btn active" id="btn-summary" onclick="setViewMode('summary')">汇总视图</button>
+                    <button class="view-mode-btn" id="btn-detail" onclick="setViewMode('detail')">明细视图</button>
+                </div>
+                <div class="divider" style="height: 16px;"></div>
+                <label class="toggle-switch">
+                    <input type="checkbox" class="switch-input" checked onchange="toggleComparison()">
+                    <span class="switch-label"></span>
+                    <span class="switch-text">显示环比</span>
+                </label>
+            </div>
+        </div>
+
+        <div class="table-container">
+            <div class="table-scroll">
+                <table>
+                    <thead id="table-head">
+                        <!-- Rendered by JS -->
+                    </thead>
+                    <tbody id="table-body">
+                        <!-- Rendered by JS -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

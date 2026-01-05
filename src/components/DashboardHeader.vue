@@ -55,7 +55,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { usePayrollStore } from '@/stores/payroll'
-import { PhCaretLeft, PhCaretRight, PhBell, PhExport, PhMoney } from '@/components/icons'
+import { PhCaretLeft, PhCaretRight, PhMoney } from '@/components/icons'
 
 const store = usePayrollStore()
 

@@ -83,23 +83,23 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
-import { usePayrollStore } from '@/stores/payroll'
-import { formatNumber, formatCurrency, getPct } from '@/utils/format'
-import { PhUsers, PhCoins, PhWarningCircle, PhSignOut, PhArrowDownRight, PhArrowUpRight } from '@/components/icons'
+// import { computed } from 'vue'
+// import { usePayrollStore } from '@/stores/payroll'
+// import { formatNumber, formatCurrency, getPct } from '@/utils/format'
+// import { PhUsers, PhCoins, PhWarningCircle, PhSignOut, PhArrowDownRight, PhArrowUpRight } from '@/components/icons'
 
-const store = usePayrollStore()
-const s = computed(() => store.dashboardSummary)
+// const store = usePayrollStore()
+// const s = computed(() => store.dashboardSummary)
 
-function getTrendIcon(chg: number) {
-  return chg >= 0 ? PhArrowUpRight : PhArrowDownRight
-}
+// function getTrendIcon(chg: number) {
+//   return chg >= 0 ? PhArrowUpRight : PhArrowDownRight
+// }
 
-function getTrendBg(chg: number) {
-   if (chg > 0) return 'tag-red'
-   if (chg < 0) return 'tag-green'
-   return 'tag-gray'
-}
+// function getTrendBg(chg: number) {
+//    if (chg > 0) return 'tag-red'
+//    if (chg < 0) return 'tag-green'
+//    return 'tag-gray'
+// }
 </script>
 
 <style scoped>

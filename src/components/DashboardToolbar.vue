@@ -56,7 +56,7 @@
 
 <script setup lang="ts">
 import { usePayrollStore } from '@/stores/payroll'
-import { PhMagnifyingGlass } from '@/components/icons'
+
 
 const store = usePayrollStore()
 </script>
